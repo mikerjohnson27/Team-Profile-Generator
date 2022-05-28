@@ -1,11 +1,12 @@
-discribe("Employee", () => {
+discribe("Engineer", () => {
     discribe("identification", () => {
         it("needs to have a name," + "a employee ID and email address", () => {
-            const employee = new Employee ("first last", 15422, "first.last@mrjtechinc.com")
-            expect(employee.getName()).toEqual("first last");
-            expect(employee.getID()).toEqual(15422);
-            expect(employee.getEmail()).toEqual("first.last@mrjtechinc.com");
-            expect(employee.getRole()).toEqual("Employee");
+            const engineer = new engineer ("first last", 15422, "first.last@mrjtechinc.com", "firstlast")
+            expect(engineer.getName()).toEqual("first last");
+            expect(engineer.getID()).toEqual(15422);
+            expect(engineer.getEmail()).toEqual("first.last@mrjtechinc.com");
+            expect(engineer.getGithub()).toEqual("firstlast")
+            expect(engineer.getRole()).toEqual("Engineer");
         })
     })
 })
