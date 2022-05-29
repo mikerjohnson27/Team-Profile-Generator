@@ -1,6 +1,6 @@
 discribe("Engineer", () => {
     discribe("identification", () => {
-        it("needs to have a name," + "a employee ID and email address", () => {
+        it("needs to have a name," + "a employee ID and email address and github acount", () => {
             const engineer = new engineer ("first last", 15422, "first.last@mrjtechinc.com", "firstlast")
             expect(engineer.getName()).toEqual("first last");
             expect(engineer.getID()).toEqual(15422);
