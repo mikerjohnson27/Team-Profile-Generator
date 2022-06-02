@@ -6,12 +6,21 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/manager_class.js');
 const Engineer = require('./lib/engineer_class.js');
 const Intern = require('./lib/intern_class.js'); 
-const Employee = require('./lib/employee_class.js');
+const { restoreDefaultPrompts } = require('inquirer');
 
 //All awnsers will be pushed here
+const employeesArray = [];
 
 //Questions to add by the type of employee
-inquirer.prompt([
+const rolepick = [{
+    type: 'list',
+    message: 'What is the employees Role?',
+    choices: ["Intern",
+            "Engineer",
+            "Manager"],
+    name: 'role'
+}];
+const Userinput = [
     {
         type: 'input',
         message: "What the name of the employee?",
@@ -24,44 +33,47 @@ inquirer.prompt([
         type: 'input',
         message: 'What is the employees ID number?',
         name: 'id'
-    },{
-        type: 'list',
-        message: 'What is the employees ID number?',
-        name: 'role',
-        choices: [
-            "Intern",
-            "Employee",
-            "Engineer",
-            "Manager"
-          ]
-    },{
-        type: 'input',
-        name: 'school',
-        message: 'Enter where the intern is going to School.',
-        when: (input) => input.role === 'Intern'
-    },{
-        type: 'input',
-        name: 'github',
-        message: 'Enter engingeers github username.',
-        when: (input) => input.role === 'Engineer'
-    },{
-        type: 'input',
-        name: 'officeNumber',
-        message: 'Enter the managers office number.',
-        when: (input) => input.role === 'Manager'
-    }])
-.then(function({employeeName, id, email, role, github, school, officeNumber}){;
-    if(role === 'Engineer') {
-        let Engineer = new Engineer (employeeName, id, email, github);
-        console.log(Engineer);
-    }else if(role === 'Intern'){
-        let Intern = new Intern (employeeName, id, email, school);
-        console.log(Intern);
-    }else if(role === 'Manager'){
-        let Manager = new Manager (employeeName, id, email, officeNumber);
-        console.log(Manager);
-    }else if(role === 'Employee'){
-        let Employee = new Employee (employeeName, id, email);
-        console.log(Employee);
     }
-});
+];
+const internQuestions = [{
+    type: 'input',
+    name: 'school',
+    message: 'Enter where the intern is going to School.',
+}];
+const engineerQuestions = [{
+    type: 'input',
+    name: 'github',
+    message: 'Enter engingeers github username.',
+}];
+const managerQuestions = [{
+    type: 'input',
+    name: 'officeNumber',
+    message: 'Enter the managers office number.',
+}];
+function employeeLoop() {
+    inquirer.prompt(rolepick)
+    prompts.next(Userinput).then((employeeRole) => {
+        if (employeeRole.role === 'Engineer') {
+            inquirer.prompt(engineerQuestions).then((engineerArray) => {
+                let engineer = new Engineer(engineerArray.employeeName,
+                    engineerArray.id, engineerArray.email,
+                    engineerArray.github);
+                    employeesArray.push(engineer);
+            });
+        } else if (employeeRole.role === 'Intern') {
+            inquirer.prompt(internQuestions).then((internArray) => {
+                let intern = new Intern(internArray.employeeName, 
+                    internArray.id, internArray.email, 
+                    internArray.school);
+                    employeesArray.push(intern);
+            });
+        } else if (employeeRole.role === 'Manager') {
+            inquirer.prompt(managerQuestions).then((managerArray) => {
+                let manager = new Manager(managerArray.employeeName, 
+                    managerArray.id, managerArray.email, 
+                    managerArray.officeNumber);
+                    employeesArray.push(manager);
+            });
+        }
+    });
+};
