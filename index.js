@@ -13,15 +13,6 @@ const employeesArray = [];
 
 //Questions to add by the type of employee
 const rolepick = [{
-    type: 'list',
-    message: 'What is the employees Role?',
-    choices: ["Intern",
-            "Engineer",
-            "Manager"],
-    name: 'role'
-}];
-const Userinput = [
-    {
         type: 'input',
         message: "What the name of the employee?",
         name: 'employeeName'
@@ -33,8 +24,15 @@ const Userinput = [
         type: 'input',
         message: 'What is the employees ID number?',
         name: 'id'
-    }
-];
+    },{
+    type: 'list',
+    message: 'What is the employees Role?',
+    choices: ["Intern",
+            "Engineer",
+            "Manager"],
+    name: 'role'
+}];
+
 const internQuestions = [{
     type: 'input',
     name: 'school',
@@ -50,9 +48,11 @@ const managerQuestions = [{
     name: 'officeNumber',
     message: 'Enter the managers office number.',
 }];
+
 function employeeLoop() {
-    inquirer.prompt(rolepick)
-    prompts.next(Userinput).then((employeeRole) => {
+    
+    inquirer.prompt(rolepick).then((employeeRole) => {
+        // inquirer.prompt(Userinput)
         if (employeeRole.role === 'Engineer') {
             inquirer.prompt(engineerQuestions).then((engineerArray) => {
                 let engineer = new Engineer(engineerArray.employeeName,
@@ -77,3 +77,4 @@ function employeeLoop() {
         }
     });
 };
+employeeLoop()
