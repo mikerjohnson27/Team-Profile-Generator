@@ -9,7 +9,7 @@ const Intern = require('./lib/intern_class.js');
 const { restoreDefaultPrompts } = require('inquirer');
 
 //All awnsers will be pushed here
-const employeesArray = [];
+let employeesArray = [];
 
 //Questions to add by the type of employee
 const rolepick = [{
@@ -78,3 +78,4 @@ function employeeLoop() {
     });
 };
 employeeLoop()
+module.exports = employeesArray();
