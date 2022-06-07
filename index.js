@@ -1,12 +1,13 @@
 //FS and inquirer is requires for file generation
 const fs = require('fs');
 const inquirer = require('inquirer');
+PORT = 3002;
 
 //File Dependancies
 const Manager = require('./lib/manager_class.js');
 const Engineer = require('./lib/engineer_class.js');
 const Intern = require('./lib/intern_class.js'); 
-const { restoreDefaultPrompts } = require('inquirer');
+const inquirer = require('inquirer');
 
 //All awnsers will be pushed here
 let employeesArray = [];
@@ -48,11 +49,17 @@ const managerQuestions = [{
     name: 'officeNumber',
     message: 'Enter the managers office number.',
 }];
+const addMore = [{
+    type: 'input',
+    message: 'Would you like to add anouther employee?',
+    choices: ["Yes",
+            "No"],
+    name: 'addMore'
+
+}];
 
 function employeeLoop() {
-    
     inquirer.prompt(rolepick).then((employeeRole) => {
-        // inquirer.prompt(Userinput)
         if (employeeRole.role === 'Engineer') {
             inquirer.prompt(engineerQuestions).then((engineerArray) => {
                 let engineer = new Engineer(engineerArray.employeeName,
@@ -75,7 +82,20 @@ function employeeLoop() {
                     employeesArray.push(manager);
             });
         }
+        console.log(employeesArray)
     });
 };
 employeeLoop()
-module.exports = employeesArray();
+addMoreLoop()
+
+function addMoreLoop(){
+    inquirer.prompt(addMore)
+    if(userInfo.addMore === 'Yes'){
+        employeeLoop()
+    }if(userInfo.addMore === 'No'){
+        console.log('thanks for using our app please view you html rendered file')
+    }
+};
+
+
+module.exports = employeesArray;
