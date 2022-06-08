@@ -85,8 +85,8 @@ function employeeLoop() {
         console.log(employeesArray)
     });
 };
-employeeLoop()
-addMoreLoop()
+employeeLoop();
+
 
 function addMoreLoop(){
     inquirer.prompt(addMore)
@@ -96,6 +96,6 @@ function addMoreLoop(){
         console.log('thanks for using our app please view you html rendered file')
     }
 };
-
+addMoreLoop();
 
 module.exports = employeesArray;
