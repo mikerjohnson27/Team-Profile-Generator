@@ -54,7 +54,7 @@ const managerQuestions = [{
     message: 'Enter the managers office number.',
 }];
 const addMore = [{
-    type: 'input',
+    type: 'list',
     message: 'Would you like to add another employee?',
     choices: ["Yes",
             "No"],
@@ -94,9 +94,9 @@ function employeeLoop() {
 };
 function addMoreLoop(){
     inquirer.prompt(addMore).then((addMore) =>{
-    if(addMore.addMore === true){
+    if(addMore.addMore === 'Yes'){
         employeeLoop()
-    }if(addMore.addMore === false){
+    }if(addMore.addMore === 'No'){
         console.log('thanks for using our app please view you html rendered file')
     }
     })

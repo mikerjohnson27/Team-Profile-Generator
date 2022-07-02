@@ -1,4 +1,4 @@
-let employeesArray = require('Team-Profile-Generator/index.js');
+let employeesArray = require('../index');
 let insert = document.getElementById('Insert-Team')
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
@@ -50,7 +50,7 @@ const arrayGenerateHTML = function employeeRole(){
     }
     fileHTML
 };
-const fileHTML = await generateHTML(employeeArray);
+const fileHTML = generateHTML(employeeArray);
 fs.writeFile("main.html", fileHTML, function (err) {
     console.log(err);
 })
