@@ -1,5 +1,7 @@
-discribe("Employee", () => {
-    discribe("identification", () => {
+const Employee = require("../lib/employee_class");
+
+describe("Employee", () => {
+    describe("identification", () => {
         it("needs to have a name," + "a employee ID and email address", () => {
             const employee = new Employee ("first last", 15422, "first.last@mrjtechinc.com")
             expect(employee.getName()).toEqual("first last");
@@ -9,3 +11,4 @@ discribe("Employee", () => {
         })
     })
 })
+module.exports = Employee

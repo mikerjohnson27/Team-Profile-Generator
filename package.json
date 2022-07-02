@@ -4,10 +4,11 @@
   "description": "My profile generator using Node.JS to create team profiles and have them converted to a web page using user input.",
   "main": "index.js",
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

@@ -1,15 +1,19 @@
+//Jest Files
+// const Intern_Test = require('./test/Intern.test');
+// const Engineer_Test = require('./test/Engineer.test');
+// const Manager_Test = require('./test/Manager.test');
+
 //FS and inquirer is requires for file generation
 const fs = require('fs');
 const inquirer = require('inquirer');
 PORT = 3002;
 
-//File Dependancies
+//File Dependencies
 const Manager = require('./lib/manager_class.js');
 const Engineer = require('./lib/engineer_class.js');
 const Intern = require('./lib/intern_class.js'); 
-const inquirer = require('inquirer');
 
-//All awnsers will be pushed here
+//All answers will be pushed here
 let employeesArray = [];
 
 //Questions to add by the type of employee
@@ -42,7 +46,7 @@ const internQuestions = [{
 const engineerQuestions = [{
     type: 'input',
     name: 'github',
-    message: 'Enter engingeers github username.',
+    message: 'Enter engineer github username.',
 }];
 const managerQuestions = [{
     type: 'input',
@@ -51,7 +55,7 @@ const managerQuestions = [{
 }];
 const addMore = [{
     type: 'input',
-    message: 'Would you like to add anouther employee?',
+    message: 'Would you like to add another employee?',
     choices: ["Yes",
             "No"],
     name: 'addMore'
@@ -66,6 +70,7 @@ function employeeLoop() {
                     engineerArray.id, engineerArray.email,
                     engineerArray.github);
                     employeesArray.push(engineer);
+                    addMoreLoop();
             });
         } else if (employeeRole.role === 'Intern') {
             inquirer.prompt(internQuestions).then((internArray) => {
@@ -73,6 +78,7 @@ function employeeLoop() {
                     internArray.id, internArray.email, 
                     internArray.school);
                     employeesArray.push(intern);
+                    addMoreLoop();
             });
         } else if (employeeRole.role === 'Manager') {
             inquirer.prompt(managerQuestions).then((managerArray) => {
@@ -80,22 +86,22 @@ function employeeLoop() {
                     managerArray.id, managerArray.email, 
                     managerArray.officeNumber);
                     employeesArray.push(manager);
+                    addMoreLoop();
             });
         }
-        console.log(employeesArray)
+        
     });
 };
-employeeLoop();
-
-
 function addMoreLoop(){
-    inquirer.prompt(addMore)
-    if(userInfo.addMore === 'Yes'){
+    inquirer.prompt(addMore).then((addMore) =>{
+    if(addMore.addMore === true){
         employeeLoop()
-    }if(userInfo.addMore === 'No'){
+    }if(addMore.addMore === false){
         console.log('thanks for using our app please view you html rendered file')
     }
+    })
 };
-addMoreLoop();
+
+employeeLoop();
 
 module.exports = employeesArray;

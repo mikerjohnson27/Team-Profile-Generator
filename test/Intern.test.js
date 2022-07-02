@@ -1,5 +1,7 @@
-discribe("Intern", () => {
-    discribe("identification", () => {
+const Intern = require("../lib/intern_class");
+
+describe("Intern", () => {
+    describe("identification", () => {
         it("needs to have a name," + "a employee ID and email address and school", () => {
             const intern = new intern ("first last", 15422, "first.last@mrjtechinc.com", "University of New Hampshire")
             expect(intern.getName()).toEqual("first last");
@@ -10,3 +12,4 @@ discribe("Intern", () => {
         })
     })
 })
+module.exports = Intern
