@@ -50,9 +50,12 @@ const arrayGenerateHTML = function employeeRole(){
     }
     fileHTML
 };
-const fileHTML = generateHTML(employeeArray);
-fs.writeFile("main.html", fileHTML, function (err) {
-    console.log(err);
-})
+const fileHTML = generateHTML(employeeArray) + fs.writeFile("main.html", fileHTML, 
+function(fileHTML){
+if(err){
+    console.log(err)
+    }
+}
+);
 
 arrayGenerateHTML
