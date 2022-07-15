@@ -1,61 +1,66 @@
 let employeesArray = require('../index');
-let insert = document.getElementById('Insert-Team')
+const Manager = require('../lib/manager_class');
+const Intern = require('../lib/intern_class');
+const Engineer = require('../lib/engineer_class');
+let insert = require('../dist/index.html')
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
+const outputPath = path.join(OUTPUT_DIR, "src/index.html");
+
+let HTMLArray = []
 
 const arrayGenerateHTML = function employeeRole(){
-    if (employeesArray.role === 'Engineer'){
-        return `
-            <div class="card">
+    if (employeesArray.role === Engineer){
+        return `<div class="card">
                 <div class="card-header">
-                    <h3>${engineer.name}</h3>
+                    <h3>${Engineer.name}</h3>
                     <h4>Engineer</h4>
                 </div>
                 <div class="card-body">
-                    <p>ID: ${engineer.id}</p>
-                    <p>Email:${engineer.email}</p>
-                    <p>Github:${engineer.github}</p>
+                    <p>ID: ${Engineer.getID}</p>
+                    <p>Email:${Engineer.getEmail}</p>
+                    <p>Github:${Engineer.github}</p>
                 </div>
-            </div>
-        `
-    }if (employeesArray.role === 'Intern'){
-        return `
-            <div class="card">
+            </div>`
+            .this.Engineer.module.exports = HTMLArray
+    }if (employeesArray.role === Intern){
+        return `<div class="card">
                 <div class="card-header">
-                    <h3>${intern.name}</h3>
+                    <h3>${Intern.getName()}</h3>
                     <h4>Intern</h4>
                 </div>
                 <div class="card-body">
-                    <p>ID: ${intern.id}</p>
-                    <p>Email:${intern.email}</p>
-                    <p>School:${intern.school}</p>
+                    <p>ID: ${Intern.getID()}</p>
+                    <p>Email:${Intern.getEmail()}</p>
+                    <p>School:${Intern.school()}</p>
                 </div>
-            </div>
-        `
-    }if (employeesArray.role === 'Manager'){
-        return `
-        <div class="card">
+            </div>`
+            .this.Intern.module.exports = HTMLArray
+    }if (employeesArray.role === Manager){
+        return `<div class="card">
             <div class="card-header">
-                <h3>${manager.name}</h3>
+                <h3>${Manager.getName()}</h3>
                 <h4>Manager</h4>
             </div>
             <div class="card-body">
-                <p>ID: ${manager.id}</p>
-                <p>Email:${manager.email}</p>
-                <p>Github:${manager.officeNumber}</p>
+                <p>ID: ${Manager.getID()}</p>
+                <p>Email:${Manager.getEmail()}</p>
+                <p>Github:${Manager.getOfficeNumber()}</p>
             </div>
-        </div>
-    `
-    }
-    fileHTML
+        </div>`
+        .this.Manager.module.exports = HTMLArray
+        }
+    fileHTML(HTMLArray);
 };
-const fileHTML = generateHTML(employeeArray) + fs.writeFile("main.html", fileHTML, 
-function(fileHTML){
-if(err){
-    console.log(err)
-    }
-}
-);
-
+function fileHTML(HTMLArray){ 
+    fs.writeFile(HTMLArray, insert)
+        modules.exports = HTMLarray.insert
+        if(err){
+            console.log(err)
+            };
+    };
 arrayGenerateHTML
+
+module.exports = Engineer
+module.exports = Manager
+module.exports = Intern

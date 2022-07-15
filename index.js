@@ -1,7 +1,8 @@
 //Jest Files
-// const Intern_Test = require('./test/Intern.test');
-// const Engineer_Test = require('./test/Engineer.test');
-// const Manager_Test = require('./test/Manager.test');
+const jest = require('jest')
+const Intern_Test = require('./test/Intern.test');
+const Engineer_Test = require('./test/Engineer.test');
+const Manager_Test = require('./test/Manager.test');
 
 //FS and inquirer is requires for file generation
 const fs = require('fs');
@@ -28,15 +29,15 @@ const rolepick = [{
     },{
         type: 'input',
         message: 'What is the employees ID number?',
-        name: 'id'
+        name: 'getID'
     },{
-    type: 'list',
-    message: 'What is the employees Role?',
-    choices: ["Intern",
-            "Engineer",
-            "Manager"],
-    name: 'role'
-}];
+        type: 'list',
+        message: 'What is the employees Role?',
+        choices: ["Intern",
+                "Engineer",
+                "Manager"],
+        name: 'role'
+    }];
 
 const internQuestions = [{
     type: 'input',
@@ -64,28 +65,28 @@ const addMore = [{
 
 function employeeLoop() {
     inquirer.prompt(rolepick).then((employeeRole) => {
-        if (employeeRole.role === 'Engineer') {
+        if (employeeRole.role === Engineer) {
             inquirer.prompt(engineerQuestions).then((engineerArray) => {
-                let engineer = new Engineer(engineerArray.employeeName,
-                    engineerArray.id, engineerArray.email,
-                    engineerArray.github);
-                    employeesArray.push(engineer);
+                let Engineer = new Engineer(engineerArray.getName(),
+                    engineerArray.getID(), engineerArray.getEmail(),
+                    engineerArray.github());
+                    employeesArray.push(Engineer);
                     addMoreLoop();
             });
-        } else if (employeeRole.role === 'Intern') {
+        } else if (employeeRole.role === Intern) {
             inquirer.prompt(internQuestions).then((internArray) => {
-                let intern = new Intern(internArray.employeeName, 
-                    internArray.id, internArray.email, 
-                    internArray.school);
-                    employeesArray.push(intern);
+                let Intern = new Intern(internArray.getName(), 
+                    internArray.getID(), internArray.getEmail(),
+                    internArray.school());
+                    employeesArray.push(Intern);
                     addMoreLoop();
             });
-        } else if (employeeRole.role === 'Manager') {
+        } else if (employeeRole.role === Manager) {
             inquirer.prompt(managerQuestions).then((managerArray) => {
-                let manager = new Manager(managerArray.employeeName, 
-                    managerArray.id, managerArray.email, 
-                    managerArray.officeNumber);
-                    employeesArray.push(manager);
+                let Manager = new Manager(managerArray.getName(), 
+                    managerArray.getID(), managerArray.getEmail(), 
+                    managerArray.officeNumber());
+                    employeesArray.push(Manager);
                     addMoreLoop();
             });
         }
@@ -105,3 +106,7 @@ function addMoreLoop(){
 employeeLoop();
 
 module.exports = employeesArray;
+module.exports = HTMLArray;
+module.exports = Manager
+module.exports = Intern
+module.exports = Engineer
