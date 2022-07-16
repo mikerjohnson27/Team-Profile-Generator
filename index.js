@@ -1,5 +1,6 @@
 //Jest Files
 const jest = require('jest')
+const Employee_Test = require('./test/Employee.test');
 const Intern_Test = require('./test/Intern.test');
 const Engineer_Test = require('./test/Engineer.test');
 const Manager_Test = require('./test/Manager.test');
@@ -10,6 +11,7 @@ const inquirer = require('inquirer');
 PORT = 3002;
 
 //File Dependencies
+const Employee = require('./lib/employee_class.js');
 const Manager = require('./lib/manager_class.js');
 const Engineer = require('./lib/engineer_class.js');
 const Intern = require('./lib/intern_class.js'); 
@@ -19,24 +21,24 @@ let employeesArray = [];
 
 //Questions to add by the type of employee
 const rolepick = [{
-        type: 'input',
+        type: "input",
         message: "What the name of the employee?",
-        name: 'employeeName'
+        name: getName()
     },{
-        type: 'input',
+        type: "input",
         message: 'What is the email of the employee?',
-        name: 'email'
+        name: getEmail()
     },{
-        type: 'input',
+        type: number,
         message: 'What is the employees ID number?',
-        name: 'getID'
+        name: getID()
     },{
-        type: 'list',
+        type: "list",
         message: 'What is the employees Role?',
         choices: ["Intern",
                 "Engineer",
                 "Manager"],
-        name: 'role'
+        name: employeesArray.getRole()
     }];
 
 const internQuestions = [{
@@ -107,6 +109,13 @@ employeeLoop();
 
 module.exports = employeesArray;
 module.exports = HTMLArray;
+
+module.exports = Employee
 module.exports = Manager
 module.exports = Intern
 module.exports = Engineer
+
+module.exports = Employee_Test
+module.exports = Manager_Test
+module.exports = Intern_Test
+module.exports = Engineer_Test

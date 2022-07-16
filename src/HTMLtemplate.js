@@ -1,4 +1,11 @@
+//Jest Files
+const Employee = require('../lib/employee_class')
+const Manager = require('../lib/manager_class');
+const Intern = require('../lib/intern_class');
+const Engineer = require('../lib/engineer_class');
+
 let employeesArray = require('../index');
+const Employee = require('../lib/employee_class')
 const Manager = require('../lib/manager_class');
 const Intern = require('../lib/intern_class');
 const Engineer = require('../lib/engineer_class');

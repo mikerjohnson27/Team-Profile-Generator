@@ -1,4 +1,5 @@
-const Manager = require("../lib/manager_class");
+const Employee_Test = require("../lib/employee_class")
+const Manager_Test = require("../lib/manager_class");
 
 describe("Manager", () => {
     describe("identification", () => {
@@ -12,4 +13,5 @@ describe("Manager", () => {
         })
     })
 })
-module.exports = Manager
+module.exports = Employee_Test
+module.exports = Manager_Test

@@ -1,4 +1,5 @@
-const Engineer = require("../lib/engineer_class");
+const Employee_Test = require("../test/Employee.test")
+const Engineer_Test = require("../lib/engineer_class");
 
 describe("Engineer", () => {
     describe("identification", () => {
@@ -7,9 +8,11 @@ describe("Engineer", () => {
             expect(engineer.getName()).toEqual("first last");
             expect(engineer.getID()).toEqual(15422);
             expect(engineer.getEmail()).toEqual("first.last@mrjtechinc.com");
-            expect(engineer.getGithub()).toEqual("firstlast")
+            expect(engineer.getGithub()).toEqual("first last")
             expect(engineer.getRole()).toEqual("Engineer");
         })
     })
 })
-module.exports = Engineer
+
+module.exports = Engineer_Test
+module.exports = Employee_Test
