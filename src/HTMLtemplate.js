@@ -1,3 +1,9 @@
+
+const Employee_Test = require("../Team-Profile-Generator/test/Employee.test");
+const Engineer_Test = require("../Team-Profile-Generator/test/Employee.test");
+const Intern_Test = require("../Team-Profile-Generator/test/Employee.test");
+const Manager_Test = require("../Team-Profile-Generator/test/Employee.test");
+
 //Jest Files
 const Employee = require('../lib/employee_class')
 const Manager = require('../lib/manager_class');
@@ -5,7 +11,7 @@ const Intern = require('../lib/intern_class');
 const Engineer = require('../lib/engineer_class');
 
 let employeesArray = require('../index');
-const Employee = require('../lib/employee_class')
+
 const Manager = require('../lib/manager_class');
 const Intern = require('../lib/intern_class');
 const Engineer = require('../lib/engineer_class');
@@ -16,22 +22,28 @@ const outputPath = path.join(OUTPUT_DIR, "src/index.html");
 
 let HTMLArray = []
 
-const arrayGenerateHTML = function employeeRole(){
+function HTMLArrayPush (employeesArray, HTMLArray){
+    employeesArray.filter(Employee.employeesArray.filter(Manager.employeesArray.filter(Manager)))
+    employeesArray.filter(Employee.employeesArray.filter(Engineer.employeesArray.filter(Engineer)))
+    employeesArray.filter(Employee.employeesArray.filter(Intern.employeesArray.filter(Intern)))
+}
+
+const arrayGenerateHTML = function employeeRole(HTMLArray, ){
     if (employeesArray.role === Engineer){
-        return `<div class="card">
+    let Engineer = `<div class="card">
                 <div class="card-header">
-                    <h3>${Engineer.name}</h3>
+                    <h3>${Engineer.getName()}</h3>
                     <h4>Engineer</h4>
                 </div>
                 <div class="card-body">
-                    <p>ID: ${Engineer.getID}</p>
-                    <p>Email:${Engineer.getEmail}</p>
-                    <p>Github:${Engineer.github}</p>
+                    <p>ID: ${Engineer.getID()}</p>
+                    <p>Email:${Engineer.getEmail()}</p>
+                    <p>Github:${Engineer.getGithub()}</p>
                 </div>
             </div>`
-            .this.Engineer.module.exports = HTMLArray
+            HTMLArrayPush(HTMLArray)
     }if (employeesArray.role === Intern){
-        return `<div class="card">
+    let Intern = `<div class="card">
                 <div class="card-header">
                     <h3>${Intern.getName()}</h3>
                     <h4>Intern</h4>
@@ -44,7 +56,7 @@ const arrayGenerateHTML = function employeeRole(){
             </div>`
             .this.Intern.module.exports = HTMLArray
     }if (employeesArray.role === Manager){
-        return `<div class="card">
+    let Manager = `<div class="card">
             <div class="card-header">
                 <h3>${Manager.getName()}</h3>
                 <h4>Manager</h4>
@@ -71,3 +83,6 @@ arrayGenerateHTML
 module.exports = Engineer
 module.exports = Manager
 module.exports = Intern
+
+module.exports = HTMLArray
+module.exports = insert
