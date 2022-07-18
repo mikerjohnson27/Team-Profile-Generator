@@ -4,12 +4,6 @@ const Manager = require('../Team-Profile-Generator/lib/manager_class');
 const Engineer = require('../Team-Profile-Generator/lib/engineer_class');
 const Intern = require('../Team-Profile-Generator/lib/intern_class');
 
-//Jest Files
-const Employee_Test = require("../Team-Profile-Generator/test/Employee.test");
-const Intern_Test = require("../Team-Profile-Generator/test/Intern.test");
-const Engineer_Test = require("../Team-Profile-Generator/test/Engineer.test");
-const Manager_Test = require("../Team-Profile-Generator/test/Manager.test");
-
 //FS and inquirer is requires for file generation
 const fs = require('fs');
 const inquirer = require('inquirer');
@@ -31,54 +25,54 @@ const rolepick = [{
 const internQuestions = [{
         type: 'input',
         message: 'Enter where the Intern is going to School.',
-        name: employeesArray.Employee.Intern.getSchool(internQuestions.input.value),
+        name: internQuestions.type.input = this.Employee.Intern.school
     },{
         type: "input",
         message: "What the name of the Intern?",
-        name: employeesArray.Employee.Intern.getName(internQuestions.input.value),
+        name: input = this.Employee.Intern.name 
     },{
         type: "input",
         message: 'What is the email of the Intern?',
-        name: employeesArray.Employee.Intern.getEmail(internQuestions.input.value),
+        name: input = this.Employee.Intern.email
     },{
         type: number,
         message: 'What is the Intern ID number?',
-        name: employeesArray.Employee.Intern.getID(internQuestions.number.value),
+        name: number = this.Employee.Intern.id
     }];
 const engineerQuestions = [{
         type: 'input',
-        name: employeesArray.Employee.Engineer.getGithub(engineerQuestions.input.value),
         message: 'Enter engineer github username.',
+        name: input = this.Employee.Engineer.github
     },{
         type: "input",
         message: "What the name of the engineer?",
-        name: employeesArray.Employee.Engineer.getRole(engineerQuestions.input.value),
+        name: input = this.Employee.Engineer.name
     },{
         type: "input",
         message: 'What is the email of the engineer?',
-        name: engineerQuestions.Employee.Engineer.getEmail(engineerQuestions.input.value),
+        name: input = this.Employee.Engineer.email
     },{
         type: number,
         message: 'What is the engineer ID number?',
-        name: engineerQuestions.Employee.Engineer.getID(engineerQuestions.number.value),
+        name: number = this.Employee.Engineer.id
     }];
 
 const managerQuestions = [{
         type: number,
         message: 'Enter the managers office number.',
-        name: employeesArray.Employee.Manager.getOfficeNumber(managerQuestions.number.value),
+        name: number = this.Employee.Manager.officeNumber
     },{
         type: "input",
         message: "What the name of the managers?",
-        name: employeesArray.Employee.Manager.getName(managerQuestions.input.value),
+        name: input = this.Employee.Manager.name
     },{
         type: "input",
         message: 'What is the email of the managers?',
-        name: employeesArray.Employee.Manager.getEmail(managerQuestions.input.value)
+        name: input = this.Employee.Manager.email
     },{
         type: number,
         message: 'What is the managers ID number?',
-        name: employeesArray.Employee.Manager.getID(managerQuestions.number.value)
+        name: input = this.Employee.Manager.id
     }];
 
 const addMore = [{
@@ -86,7 +80,7 @@ const addMore = [{
     message: 'Would you like to add another employee?',
     choices: ["Yes",
             "No"],
-    name: addMore(addMore.list.choices[""].value)
+    name: 'addMore'
 
 }];
 
@@ -142,8 +136,3 @@ module.exports = Employee
 module.exports = Manager
 module.exports = Intern
 module.exports = Engineer
-
-module.exports = Employee_Test
-module.exports = Manager_Test
-module.exports = Intern_Test
-module.exports = Engineer_Test
